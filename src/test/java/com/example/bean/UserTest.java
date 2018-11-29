@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -13,13 +14,13 @@ public class UserTest {
     @Test
     public void test(){
         User user = new User();
-        ArrayList<User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
 
         user.setUserId(0);
         user.setUserName("Alice");
         user.setPassword("aaa");
         user.setActivate(true);
-        user.setGender(User.Gender.FEMALE);
+        user.setGender("Female");
 
         users.add(user);
 
@@ -28,7 +29,7 @@ public class UserTest {
         user.setUserName("Andrew");
         user.setPassword("abc123");
         user.setActivate(true);
-        user.setGender(User.Gender.MALE);
+        user.setGender("Male");
 
         users.add(user);
 
@@ -37,7 +38,7 @@ public class UserTest {
         user.setUserName("Dick");
         user.setPassword("qwer");
         user.setActivate(false);
-        user.setGender(User.Gender.MALE);
+        user.setGender("Male");
 
         users.add(user);
 
