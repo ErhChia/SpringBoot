@@ -1,6 +1,8 @@
 package com.example.dao;
 
+import com.example.bean.Clazz;
 import com.example.bean.Student;
+import com.example.repository.StudentRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,26 +18,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Transactional
 public class StudentDaoTest {
     @Resource
-    private StudentDao dao;
+    private StudentRepository repository;
     @Test
     public void crud(){
-        dao.create();
-        Student student=new Student();
-        student.setId("t226");
-        student.setNo("sungyeh");
-        dao.insert(student);
-        student.setId("t227");
-        dao.insert(student);
-        Student target=dao.findOne(student);
-        assertThat(target).isNotNull();
-        System.err.println(target);
-        assertThat(dao.find()).hasSize(2);
-        dao.delete("t226");
-        assertThat(dao.find()).hasSize(1);
-        student.setId("t227");
-        student.setNo("tttttt");
-        dao.update(student);
-        System.err.println(dao.findOne(student));
+        repository.findAll().forEach(student -> System.out.println(student));
+        System.out.println(repository.findByNo("Electric"));
+        Clazz clazz=repository.findByIdAndNo("0004","Bob").getClazz();
 
     }
 }
