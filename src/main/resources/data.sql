@@ -1,8 +1,5 @@
-
-INSERT INTO clazz VALUES ('101', '1');
-
- INSERT INTO Student VALUES ('0001', 'Anna','101');
- INSERT INTO Student VALUES ('0002', 'Damnit','101');
- INSERT INTO Student VALUES ('0003', 'Charlie','101');
- INSERT INTO Student VALUES ('0004', 'Bob','101');
- INSERT INTO Student VALUES ('0005', 'Electric','101');
+INSERT INTO user_data(name_,password_,activate_,gender_) VALUES ('Alice','abc123',true,'Female');
+INSERT INTO USER_DATA(NAME_,PASSWORD_,ACTIVATE_,GENDER_) VALUES('Alex','aaaa123',TRUE,'Male');
+INSERT INTO USER_DATA(NAME_,PASSWORD_,ACTIVATE_,GENDER_) VALUES('Peter','H31l0w0rld',FALSE,'Male');
+INSERT INTO USER_DATA(NAME_,PASSWORD_,ACTIVATE_,GENDER_) VALUES('Daisy','thisIsABook',FALSE,'Female');
+INSERT INTO USER_DATA(NAME_,PASSWORD_,ACTIVATE_,GENDER_) VALUES('Jessie','ppap5566',TRUE,'Male');

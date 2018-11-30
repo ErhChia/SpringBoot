@@ -1,9 +1,7 @@
 package com.example.dao.impl;
 
-import com.example.bean.Student;
 import com.example.bean.User;
 import com.example.dao.UserDao;
-import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -15,6 +13,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
+ * Implement of UserDao
+ *
  * @author Jack Lin on 11/29/18
  */
 @Repository
@@ -73,15 +73,15 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User find(User user) {
-        return (User)template.queryForObject("select * from practice_user_data where id_=?",new Object[]{user.getUserId()},new UserMapper());
+        return (User) template.queryForObject("select * from practice_user_data where id_=?", new Object[]{user.getUserId()}, new UserMapper());
     }
 
     @Override
     public User find(int id) {
-        return (User)template.queryForObject("select * from practice_user_data where id_=?",new Object[]{id},new UserMapper());
+        return (User) template.queryForObject("select * from practice_user_data where id_=?", new Object[]{id}, new UserMapper());
     }
 
-    class UserMapper implements RowMapper{
+    class UserMapper implements RowMapper {
 
         @Override
         public Object mapRow(ResultSet resultSet, int rowNum) throws SQLException {

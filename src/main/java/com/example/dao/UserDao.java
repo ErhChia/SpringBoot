@@ -5,6 +5,7 @@ import com.example.bean.User;
 import java.util.List;
 
 /**
+ * DAO for database "user_data"
  * @author Jack Lin on 11/29/18
  */
 public interface UserDao {
