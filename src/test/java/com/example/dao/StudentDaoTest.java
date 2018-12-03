@@ -2,6 +2,7 @@ package com.example.dao;
 
 import com.example.bean.Clazz;
 import com.example.bean.Student;
+import com.example.repository.ClazzRepository;
 import com.example.repository.StudentRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,11 +20,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StudentDaoTest {
     @Resource
     private StudentRepository repository;
+    @Resource
+    private ClazzRepository clazzRepository;
     @Test
     public void crud(){
-        repository.findAll().forEach(student -> System.out.println(student));
-        System.out.println(repository.findByNo("Electric"));
-        Clazz clazz=repository.findByIdAndNo("0004","Bob").getClazz();
+        clazzRepository.findAll().forEach(clazz -> clazz.getStudents().forEach(student -> System.out.println(student.getId())));
 
     }
 }
