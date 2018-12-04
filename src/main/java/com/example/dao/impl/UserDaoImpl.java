@@ -41,8 +41,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void insert(User user) {
         template.update("INSERT INTO PRACTICE_USER_DATA VALUES(?,?,?,?,?)",
-                user.getUserId(),
-                user.getUserName(),
+                user.getId(),
+                user.getName(),
                 user.getPassword(),
                 user.getActivate(),
                 user.getGender()
@@ -58,11 +58,11 @@ public class UserDaoImpl implements UserDao {
     public void update(User user) {
         template.update("UPDATE PRACTICE_USER_DATA SET USER_NAME_=?," +
                         "PASSWORD_=?,ACTIVE_=?,GENDER_=? WHERE ID_=?",
-                user.getUserName(),
+                user.getName(),
                 user.getPassword(),
                 user.getActivate(),
                 user.getGender(),
-                user.getUserId()
+                user.getId()
         );
     }
 
@@ -73,7 +73,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User find(User user) {
-        return (User) template.queryForObject("select * from practice_user_data where id_=?", new Object[]{user.getUserId()}, new UserMapper());
+        return (User) template.queryForObject("select * from practice_user_data where id_=?", new Object[]{user.getId()}, new UserMapper());
     }
 
     @Override
@@ -86,8 +86,8 @@ public class UserDaoImpl implements UserDao {
         @Override
         public Object mapRow(ResultSet resultSet, int rowNum) throws SQLException {
             User user = new User();
-            user.setUserId(resultSet.getInt("id_"));
-            user.setUserName(resultSet.getString("user_name_"));
+            user.setId(resultSet.getInt("id_"));
+            user.setName(resultSet.getString("user_name_"));
             user.setPassword(resultSet.getString("password_"));
             user.setActivate(resultSet.getBoolean("active_"));
             user.setGender(resultSet.getString("gender_"));

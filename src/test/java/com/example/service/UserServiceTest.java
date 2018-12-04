@@ -1,16 +1,16 @@
 package com.example.service;
 
 import com.example.bean.User;
+import com.example.bean.UserRole;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 /**
  * @author Jack Lin on 11/29/18
@@ -21,48 +21,42 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class UserServiceTest {
 
     @Resource
+    private
     UserService userService;
 
     @Test
-    public void crudTest(){
-        userService.create();
-        User user = new User();
+    public void crudTest() {
+        User target = new User();
+        User result;
+        UserRole userRole = new UserRole();
 
-        user.setUserId(0);
-        user.setUserName("Alice");
-        user.setPassword("aaa");
-        user.setActivate(true);
-        user.setGender("Female");
+        target.setName("Dora");
+        target.setPassword("qwerty");
+        target.setGender("Female");
+        target.setActivate(true);
+        userRole.setId(2);
+        target.setUserRoleId(userRole);
 
-        userService.insert(user);
+        userService.insert(target);
+        List<User> users = userService.findAll();
 
-        user.setUserId(1);
-        user.setUserName("Andrew");
-        user.setPassword("abc123");
-        user.setActivate(true);
-        user.setGender("Male");
+        assertThat(users).hasSize(7);
+        users.forEach(System.err::println);
 
-        userService.insert(user);
+        userRole.setId(1);
+        target.setUserRoleId(userRole);
+        userService.update(target);
+        result = userService.findOne(target);
+        assertThat(result).isNotNull();
+        System.err.println(result);
 
-        User target = userService.find(user);
-        assertThat(target).isNotNull();
-        System.err.println(target);
+        userService.delete(target);
+        result = userService.findOne(target);
+        assertThat(result).isNull();
+        System.err.println(result);
 
-        List<User> data = userService.find();
-
-        assertThat(data).isNotNull();
-        System.err.println(data);
-
-        userService.delete(1);
-        assertThat(userService.find()).hasSize(1);
-
-        user.setUserId(0);
-        user.setUserName("Alice");
-        user.setPassword("abc123");
-        user.setActivate(true);
-        user.setGender("Female");
-        userService.update(user);
-
-        System.err.println(userService.find(0));
+        users = userService.findAll();
+        assertThat(users).hasSize(6);
+        users.forEach(System.err::println);
     }
 }

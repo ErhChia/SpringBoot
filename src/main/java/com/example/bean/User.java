@@ -20,13 +20,13 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id_")
-    private int userId;
+    private int id;
 
     /**
      * 使用者名稱
      */
     @Column(name = "name_")
-    private String userName;
+    private String name;
 
     /**
      * 使用者密碼
@@ -45,4 +45,11 @@ public class User {
      */
     @Column(name = "gender_")
     private String gender;
+
+    /**
+     * 帳戶身分
+     */
+    @ManyToOne
+    @JoinColumn(name = "user_role_id_")
+    private UserRole userRoleId;
 }

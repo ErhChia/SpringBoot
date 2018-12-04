@@ -11,17 +11,22 @@ import java.util.List;
  */
 
 public interface UserService {
-    void create();
 
+    /**
+     * 將user插入至Entity
+     *
+     * @param user
+     */
     void insert(User user);
 
-    void delete(int id);
+    /**
+     * @param user
+     */
+    void delete(User user);
 
     void update(User user);
 
-    List<User> find();
+    List<User> findAll();
 
-    User find(User user);
-
-    User find(int id);
+    User findOne(User user);
 }

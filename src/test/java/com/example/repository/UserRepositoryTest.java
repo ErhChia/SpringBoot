@@ -26,18 +26,15 @@ public class UserRepositoryTest {
 
         List<User> users = repository.findAll();
         users.forEach(System.err::println);
-        assertThat(users).isNotEmpty();
+        assertThat(users).isNotNull();
 
         users = repository.findByGender("Male");
         users.forEach(System.err::println);
-        assertThat(users).isNotEmpty();
+        assertThat(users).isNotNull();
 
         users = repository.findByActivate(false);
         users.forEach(System.err::println);
-        assertThat(users).isNotEmpty();
+        assertThat(users).isNotNull();
 
-        System.err.println(repository.findByUserNameAndGender("Jessie", "Female"));
-
-        System.err.println(repository.findByUserName("Alex"));
     }
 }

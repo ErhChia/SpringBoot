@@ -11,11 +11,20 @@ import java.util.List;
  * @author Jack Lin on 11/30/18
  */
 public interface UserRepository extends JpaRepository<User, Integer> {
+
+    /**
+     * 尋找所有和gender性別相同的資料
+     *
+     * @param gender
+     * @return
+     */
     List<User> findByGender(String gender);
 
+    /**
+     * 尋找所有啟用或非啟用的帳戶資料
+     *
+     * @param activate
+     * @return
+     */
     List<User> findByActivate(Boolean activate);
-
-    User findByUserNameAndGender(String name, String gender);
-
-    User findByUserName(String name);
 }
