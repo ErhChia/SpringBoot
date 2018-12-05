@@ -1,6 +1,7 @@
 package com.example.repository;
 
 import com.example.domain.User;
+import com.example.domain.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -27,4 +28,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
      * @return
      */
     List<User> findByActivate(Boolean activate);
+
+    /**
+     * 尋找符合userRole list 的使用者
+     *
+     * @param userRole
+     * @return
+     */
+    User findByUserRoles(List<UserRole> userRole);
 }

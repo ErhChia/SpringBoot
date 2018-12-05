@@ -3,6 +3,7 @@ package com.example.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Entity for database "user_data"
@@ -10,7 +11,8 @@ import javax.persistence.*;
  * @author Jack Lin on 11/30/18
  */
 @Data
-@Entity(name = "user_data")
+@Entity
+@Table(name = "user_data")
 public class User {
 
 
@@ -59,4 +61,15 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "user_role_id_")
     private UserRole userRoleId;
+
+    @ManyToMany
+    @JoinTable(
+            name = "role_users",
+            joinColumns = {@JoinColumn(name = "user_role_id_")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id_")},
+            uniqueConstraints = @UniqueConstraint(
+                    columnNames = {"user_role_id_", "user_id_"}
+            )
+    )
+    private List<UserRole> userRoles;
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * 儲存使用者帳戶身份的Entity
@@ -13,7 +14,8 @@ import javax.persistence.Id;
  * @author Jack Lin on 12/3/18
  */
 @Data
-@Entity(name = "user_role")
+@Entity
+@Table(name = "user_role")
 public class UserRole {
 
     /**

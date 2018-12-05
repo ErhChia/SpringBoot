@@ -1,7 +1,7 @@
 package com.example.service;
 
 import com.example.domain.User;
-import com.example.domain.UserRole;
+import com.example.repository.UserRoleRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,21 +24,21 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 public class UserServiceTest {
 
     @Resource
-    private
-    UserService userService;
+    private UserService userService;
+
+    @Resource
+    private UserRoleRepository userRoleRepository;
 
     @Test
     public void crudTest() {
         User target = new User();
         User result;
-        UserRole userRole = new UserRole();
 
         target.setName("Dora");
         target.setPassword("qwerty");
         target.setGender("Female");
         target.setActivate(true);
-        userRole.setId(2);
-        target.setUserRoleId(userRole);
+        target.setUserRoleId(userRoleRepository.getOne(2));
 
         userService.insert(target);
         List<User> users = userService.findAll();
@@ -46,8 +46,7 @@ public class UserServiceTest {
         assertThat(users).hasSize(7);
         users.forEach(System.err::println);
 
-        userRole.setId(1);
-        target.setUserRoleId(userRole);
+        target.setUserRoleId(userRoleRepository.getOne(1));
         userService.update(target);
         result = userService.findOne(target);
         assertThat(result).isNotNull();
