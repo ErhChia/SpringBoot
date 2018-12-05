@@ -1,33 +1,31 @@
 package com.example.web;
 
-import com.example.bean.User;
+import com.example.domain.User;
 import com.example.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/jack")
+@RequestMapping("/jack")
 public class MyController {
 
     @Resource
     private UserService userService;
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
-    public String homePage(){
+    public String index() {
         return "hello.html";
     }
 
-    @RequestMapping(value = "page", method = RequestMethod.GET)
+    @GetMapping("users")
     @ResponseBody
-    public List<User> page(){
+    public List<User> findAll() {
         return userService.findAll();
-    }
-    @RequestMapping(value = "print")
-    public String print(@RequestParam("test")String test){
-        System.out.println(test);
-        return "hello.html";
     }
 }

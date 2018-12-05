@@ -1,4 +1,4 @@
-package com.example.bean;
+package com.example.domain;
 
 import lombok.Data;
 
@@ -9,12 +9,6 @@ import javax.persistence.Id;
 /**
  * 儲存使用者帳戶身份的Entity
  * 不會做更動
- * <ul>
- * <li>0: admin</li>
- * <li>1: high permission user</li>
- * <li>2: normal user</li>
- * <li>99: disabled account/ banned account</li>
- * </ul>
  *
  * @author Jack Lin on 12/3/18
  */
@@ -27,7 +21,7 @@ public class UserRole {
      */
     @Column(name = "id_")
     @Id
-    private int id;
+    private Integer id;
 
     /**
      * 使用者帳戶身分

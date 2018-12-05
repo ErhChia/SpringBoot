@@ -1,12 +1,11 @@
 package com.example.service.impl;
 
-import com.example.bean.Student;
-import com.example.dao.StudentDao;
+import com.example.domain.Student;
 import com.example.service.StudentService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
+
 @Service
 public class StudentServiceImpl implements StudentService {
 //    @Resource

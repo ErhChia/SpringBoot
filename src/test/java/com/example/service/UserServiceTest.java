@@ -1,13 +1,14 @@
 package com.example.service;
 
-import com.example.bean.User;
-import com.example.bean.UserRole;
+import com.example.domain.User;
+import com.example.domain.UserRole;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -18,6 +19,8 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
+
 public class UserServiceTest {
 
     @Resource

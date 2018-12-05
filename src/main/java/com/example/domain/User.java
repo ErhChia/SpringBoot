@@ -1,4 +1,4 @@
-package com.example.bean;
+package com.example.domain;
 
 import lombok.Data;
 
@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 /**
  * Entity for database "user_data"
+ *
  * @author Jack Lin on 11/30/18
  */
 @Data
@@ -18,9 +19,9 @@ public class User {
      * 序號自動增加
      */
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_")
-    private int id;
+    private Integer id;
 
     /**
      * 使用者名稱
@@ -48,6 +49,12 @@ public class User {
 
     /**
      * 帳戶身分
+     * <ul>
+     * <li>0: admin</li>
+     * <li>1: high permission user</li>
+     * <li>2: normal user</li>
+     * <li>99: disabled account/ banned account</li>
+     * </ul>
      */
     @ManyToOne
     @JoinColumn(name = "user_role_id_")

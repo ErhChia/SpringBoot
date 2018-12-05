@@ -1,7 +1,7 @@
 package com.example.dao.impl;
 
-import com.example.bean.User;
 import com.example.dao.UserDao;
+import com.example.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;

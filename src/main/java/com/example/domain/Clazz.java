@@ -1,4 +1,4 @@
-package com.example.bean;
+package com.example.domain;
 
 import lombok.Data;
 
@@ -20,5 +20,5 @@ public class Clazz {
             inverseJoinColumns = {@JoinColumn(name = "student_id_")},
             uniqueConstraints = @UniqueConstraint(
                     columnNames = {"clazz_id_", "student_id_"}))
-    List<Student>students;
+    List<Student> students;
 }
